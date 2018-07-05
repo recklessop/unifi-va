@@ -22,7 +22,7 @@ do
   clear
   echo "=================================================="
   echo "=      Recklessop's Unifi Virtual Appliance      ="
-  echo "=        Info and Config menu v1.0.0             ="
+  echo "=        Info and Config menu v1.0.1             ="
   echo "=================================================="
   echo "Current Network Config:"
   echo "   Interface Name: $interface"
@@ -31,9 +31,9 @@ do
   echo "   Default Gateway: $ipgw"
   echo "=================================================="
   echo -e "Select an action from the menu below\n"
-  echo "1.) Update Unifi Application  2.) Configure Network Settings"
-  echo "3.) Update Unifi-va Scripts   4.) Bash Shell"
-  echo "5.) Exit"
+  echo "1.) Update Unifi Application    2.) Configure Network Settings"
+  echo "3.) Update Unifi-va Scripts     4.) Bash Shell"
+  echo "5.) CHange unifi user password  6.)Exit"
   read choice
   case "$choice" in
           1) # Update Unifi Scripts from Github
@@ -86,7 +86,12 @@ do
               clear
               /bin/bash
               ;;
-          5) # exit the menu script
+          5) # enter bash shell prompt
+              clear
+	      echo "Enter a new password for user unifi:"
+              /usr/bin/passwd
+              ;;
+          6) # exit the menu script
               exit
               ;;
           *) echo "invalid option try again";;
