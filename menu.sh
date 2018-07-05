@@ -63,7 +63,7 @@ do
                                 case "$confirm" in
                                    "Y" | "y")
                                         awk -f /home/unifi/unifi-va/changeInterface.awk /etc/network/interfaces device="$interface" mode=static address="$nicip" netmask="$nicmask" dns="$nicdns" gateway="$nicgw" | sudo tee /etc/network/interfaces
-                                        sudo /etc/init.d/networking restart
+                                        sudo reboot
                                         ;;
                                    *)
                                         break
@@ -72,7 +72,7 @@ do
                                 ;;
                     "D" | "d") # update /etc/network/interface with dhcp config
                                 awk -f /home/unifi/unifi-va/changeInterface.awk /etc/network/interfaces device=enp0s17 mode=dhcp | sudo tee /etc/network/interfaces
-                                sudo /etc/init.d/networking restart
+                                sudo reboot
                                 ;;
                     *) echo "invalid option try again";;
                 esac
