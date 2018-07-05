@@ -73,7 +73,7 @@ do
                                 esac
                                 ;;
                     "D" | "d") # update /etc/network/interface with dhcp config
-                                awk -f /home/unifi/unifi-va/changeInterface.awk /etc/network/interfaces device=enp0s17 mode=dhcp | sudo tee /etc/network/interfaces
+                                awk -f /home/unifi/unifi-va/changeInterface.awk /etc/network/interfaces device="$interface" mode=dhcp | sudo tee /etc/network/interfaces
                                 echo "Press any key to reboot"
 				read reboot
 				sudo reboot
