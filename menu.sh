@@ -22,7 +22,7 @@ do
   clear
   echo "=================================================="
   echo "=      Recklessop's Unifi Virtual Appliance      ="
-  echo "=        Info and Config menu v1.0.1             ="
+  echo "=        Info and Config menu v1.0.3             ="
   echo "=================================================="
   echo "Current Network Config:"
   echo "   Interface Name: $interface"
@@ -33,7 +33,7 @@ do
   echo -e "Select an action from the menu below\n"
   echo "1.) Update Unifi Application    2.) Configure Network Settings"
   echo "3.) Update Unifi-va Scripts     4.) Bash Shell"
-  echo "5.) CHange unifi user password  6.)Exit"
+  echo "5.) Change unifi user password  6.)Exit"
   read choice
   case "$choice" in
           1) # Update Unifi Scripts from Github
@@ -63,7 +63,9 @@ do
                                 case "$confirm" in
                                    "Y" | "y")
                                         awk -f /home/unifi/unifi-va/changeInterface.awk /etc/network/interfaces device="$interface" mode=static address="$nicip" netmask="$nicmask" dns="$nicdns" gateway="$nicgw" | sudo tee /etc/network/interfaces
-                                        sudo reboot
+                	                echo "Press any key to reboot"
+					read reboot
+					sudo reboot
                                         ;;
                                    *)
                                         break
@@ -72,7 +74,9 @@ do
                                 ;;
                     "D" | "d") # update /etc/network/interface with dhcp config
                                 awk -f /home/unifi/unifi-va/changeInterface.awk /etc/network/interfaces device=enp0s17 mode=dhcp | sudo tee /etc/network/interfaces
-                                sudo reboot
+                                echo "Press any key to reboot"
+				read reboot
+				sudo reboot
                                 ;;
                     *) echo "invalid option try again";;
                 esac
