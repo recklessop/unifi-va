@@ -33,7 +33,7 @@ do
   echo -e "Select an action from the menu below\n"
   echo "1.) Update Unifi Application    2.) Configure Network Settings"
   echo "3.) Update Unifi-va Scripts     4.) Bash Shell"
-  echo "5.) Change unifi user password  6.)Exit"
+  echo "5.) Change unifi user password  6.) Exit"
   read choice
   case "$choice" in
           1) # Update Unifi Scripts from Github
