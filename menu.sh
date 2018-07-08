@@ -101,7 +101,7 @@ do
           6) # exit the menu script
               exit
               ;;
-          9) # Update Unifi Scripts from StevenDeZalia Github
+          99) # Update Unifi Scripts from StevenDeZalia Github
               clear
               echo "Updating Unifi from StevenDeZalia GitHub"
               (cd /home/unifi/unifi-va/ && git reset --hard HEAD && git pull http://www.github.com/StevenDeZalia/unifi-va/)
