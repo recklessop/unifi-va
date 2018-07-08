@@ -101,6 +101,16 @@ do
           6) # exit the menu script
               exit
               ;;
+          7) # Restart Unifi Service
+              clear
+              echo "Restating Unifi Controller Services"
+              (sudo service unifi restart)
+              ;;
+          8) # Reboot Unifi Server Appliance
+              clear
+              echo "Rebootign Unifi Server Appliance, you will need to reconnect"
+              (sudo reboot)
+              ;;
           99) # Update Unifi Scripts from StevenDeZalia Github
               clear
               echo "Updating Unifi from StevenDeZalia GitHub"
