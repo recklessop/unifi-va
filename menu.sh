@@ -101,6 +101,11 @@ do
           6) # exit the menu script
               exit
               ;;
+          99) # Update Unifi Scripts from StevenDeZalia Github
+              clear
+              echo "Updating Unifi from StevenDeZalia GitHub"
+              (cd /home/unifi/unifi-va/ && git reset --hard HEAD && git pull http://www.github.com/StevenDeZalia/unifi-va/)
+              ;;
           *) echo "invalid option try again";;
       esac
       echo "Press any key to Continue..."
