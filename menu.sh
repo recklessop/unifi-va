@@ -17,7 +17,8 @@ do
   iptype=$(cat /etc/network/interfaces | grep -vi "lo" | grep -i "inet" | awk '{print $NF}')
   ipinfo=$(ifconfig $interface | awk '/inet addr/' | sed "s/^[ \t]*//")
   ipgw=$(ip route | grep -i "default" | awk '{ print $3 }')
-
+  manadd=$(/sbin/ifconfig $interface | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
+  
   # start menu output
   clear
   echo "=================================================="
@@ -29,6 +30,7 @@ do
   echo "   Static \ DHCP: $iptype"
   echo "   Details: $ipinfo"
   echo "   Default Gateway: $ipgw"
+  echo "   Management Address: https://$manadd:8443" 
   echo "=================================================="
   echo -e "Select an action from the menu below\n"
   echo "1.) Update Unifi Application    2.) Configure Network Settings"
