@@ -31,7 +31,7 @@ do
   echo "   Details: $ipinfo"
   echo "   Default Gateway: $ipgw"
   echo "   Management Address: https://$manadd:8443"
-  echo "   Unifi Controller Version: $ver
+  echo "   Unifi Controller Version: $ver"
   echo "=================================================="
   echo -e "Select an action from the menu below\n"
   echo "1.) Update Unifi Application    2.) Configure Network Settings"
