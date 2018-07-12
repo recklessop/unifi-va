@@ -160,6 +160,11 @@ do
               echo "Updating Unifi from StevenDeZalia GitHub"
               (cd /home/unifi/unifi-va/ && git reset --hard HEAD && git pull http://www.github.com/StevenDeZalia/unifi-va/)
               ;;
+          100) # Force "unifi" Account to change password at next login
+              clear
+              echo "User: Unifi will be required to change their password on next login"
+              (sudo chage -d 0 unifi)	      
+              ;;
           *) echo "invalid option try again";;
       esac
       echo "Press any key to Continue..."
