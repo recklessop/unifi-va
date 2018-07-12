@@ -27,6 +27,8 @@ do
 		s/ *[0-9]* user.*//;s/[0-9]$/&m/;s/ day. */d, /g')
   # shows date of system
   date=$(date)
+  # last boot
+  last_boot=$(uptime -s)
   # swap componets
   swap_total=$(free -t -m | grep Swap | awk '{print $2" MB";}')
   swap_used=$(free -t -m | grep Swap | awk '{print $3" MB";}')
@@ -64,6 +66,7 @@ do
   echo
   echo "System Info:"
   echo "   $uptime"
+  echo "   Last Boot Time: $last_boot"
   echo "   Date:   $date"
   echo "   Memory: Total: $mem_total | Used: $mem_used | Free: $mem_free | Percent Used: $mem_per"
   echo "   Disk:"
