@@ -45,14 +45,17 @@ do
   echo "=      Recklessop's Unifi Virtual Appliance      ="
   echo "=        Info and Config menu v1.0.3             ="
   echo "=================================================="
+  echo
   echo "Current Network Config:"
   echo "   Interface Name: $interface"
   echo "   Static \ DHCP: $iptype"
   echo "   Details: $ipinfo"
   echo "   Default Gateway: $ipgw"
+  echo
   echo "Unifi Config:"
   echo "   Management Address: https://$manadd:8443"
   echo "   Unifi Controller Version: $ver"
+  echo
   echo "System Info:"
   echo "   Uptime: $uptime"
   echo "   Date:   $date"
