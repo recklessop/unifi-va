@@ -51,7 +51,7 @@ do
   echo "System Info:"
   echo "   Uptime: $uptime"
   echo "   Date:   $date"
-  echo "   Memory: Total: $swap_total | Used: $swap_used | Free: $swap_free | % Used: $swap_per"
+  echo "   Memory: Total: $mem_total | Used: $mem_used | Free: $mem_free | % Used: $mem_per"
   echo "   Swap:   Total: $swap_total | Used: $swap_used | Free: $swap_free | % Used: $swap_per"
 
   
