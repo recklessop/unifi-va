@@ -83,7 +83,7 @@ do
   echo "7.) Restart Unifi Service       8.) Reboot Unifi Appliance"
   read choice
   case "$choice" in
-          1) # Update Unifi Scripts from Github
+          1) # Updating Unifi from Ubuntu APT repo
               clear
               echo "Updating Unifi from Ubuntu APT repo"
               (sudo apt update && sudo apt upgrade -y)
