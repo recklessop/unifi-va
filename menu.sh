@@ -30,13 +30,14 @@ do
   echo "   Static \ DHCP: $iptype"
   echo "   Details: $ipinfo"
   echo "   Default Gateway: $ipgw"
+  echo "Unifi Config:"
   echo "   Management Address: https://$manadd:8443"
   echo "   Unifi Controller Version: $ver"
   echo "=================================================="
   echo -e "Select an action from the menu below\n"
   echo "1.) Update Unifi Application    2.) Configure Network Settings"
   echo "3.) Update Unifi-va Scripts     4.) Bash Shell"
-  echo "5.) Change unifi user password  6.) Exit Session"
+  echo "5.) Change unifi user password  6.) Exit Session (Disconnect)"
   echo "7.) Restart Unifi Service       8.) Reboot Unifi Appliance"
   read choice
   case "$choice" in
