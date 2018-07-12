@@ -22,7 +22,9 @@ do
   # displays version of Unifi installed
   ver=$(cat /var/lib/unifi/db/version)
   # system uptime
-  uptime=$(uptime -p)
+  uptime=$(uptime |awk -F, '{print $1,$2}' |
+  		sed 's/:/h, /g;s/^.*up */Uptime: /;
+		s/ *[0-9]* user.*//;s/[0-9]$/&m/;s/ day. */d, /g')
   # shows date of system
   date=$(date)
   # swap componets
@@ -61,7 +63,7 @@ do
   echo "   Unifi Controller Version: $ver"
   echo
   echo "System Info:"
-  echo "   Uptime: $uptime"
+  echo "   $uptime"
   echo "   Date:   $date"
   echo "   Memory: Total: $mem_total | Used: $mem_used | Free: $mem_free | Percent Used: $mem_per"
   echo "   Disk:"
