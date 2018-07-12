@@ -19,6 +19,21 @@ do
   ipgw=$(ip route | grep -i "default" | awk '{ print $3 }')
   manadd=$(/sbin/ifconfig $interface | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
   ver=$(cat /var/lib/unifi/db/version)
+  uptime=$(uptime)
+  date=$(date)
+  # swap componets
+  swap_total=`free -t -m | grep Swap | awk '{print $2" MB";}'`
+  swap_used=`free -t -m | grep Swap | awk '{print $3" MB";}'`
+  swap_free=`free -t -m | grep Swap | awk '{print $4" MB";}'`
+  swap_per=`free -m | awk '/Swap/ { printf("%3.1f%%", $3/$2*100) }'`
+  # memory componets
+  mem_total=`free -t -m | grep Mem | awk '{print $2" MB";}'`
+  mem_used=`free -t -m | grep Mem | awk '{print $3" MB";}'`
+  mem_free=`free -t -m | grep Mem | awk '{print $4" MB";}'`
+  mem_per=`free -m | awk '/Mem/ { printf("%3.1f%%", $3/$2*100) }'`
+  
+  memory_usage=`free -m | awk '/Mem/ { printf("%3.1f%%", $3/$2*100) }'`
+  
   # start menu output
   clear
   echo "=================================================="
@@ -33,6 +48,13 @@ do
   echo "Unifi Config:"
   echo "   Management Address: https://$manadd:8443"
   echo "   Unifi Controller Version: $ver"
+  echo "System Info:"
+  echo "   Uptime: $uptime"
+  echo "   Date: $date"
+  echo "   Swap: Total: $swap_total | Used: $swap_used | Free: $swap_free | % Used: $swap_per"
+  echo "   Memory: Total: $swap_total | Used: $swap_used | Free: $swap_free | % Used: $swap_per"
+  
+  
   echo "=================================================="
   echo -e "Select an action from the menu below\n"
   echo "1.) Update Unifi Application    2.) Configure Network Settings"
