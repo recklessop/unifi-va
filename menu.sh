@@ -31,8 +31,13 @@ do
   mem_used=`free -t -m | grep Mem | awk '{print $3" MB";}'`
   mem_free=`free -t -m | grep Mem | awk '{print $4" MB";}'`
   mem_per=`free -m | awk '/Mem/ { printf("%3.1f%%", $3/$2*100) }'`
-  
-  memory_usage=`free -m | awk '/Mem/ { printf("%3.1f%%", $3/$2*100) }'`
+  # disk storage componets
+  disk_name=$(df -h / | grep / | awk '{print $1;}')
+  disk_size=$(df -h / | grep / | awk '{print $2;}')
+  disk_used=$(df -h / | grep / | awk '{print $3;}')
+  disk_free=$(df -h / | grep / | awk '{print $4;}')
+  disk_per=$(df -h / | grep / | awk '{print $5;}')
+  disk_mnt=$(df -h / | grep / | awk '{print $6;}')
   
   # start menu output
   clear
@@ -52,7 +57,9 @@ do
   echo "   Uptime: $uptime"
   echo "   Date:   $date"
   echo "   Memory: Total: $mem_total | Used: $mem_used | Free: $mem_free | % Used: $mem_per"
-  echo "   Swap:   Total: $swap_total | Used: $swap_used | Free: $swap_free | % Used: $swap_per"
+  echo "   Disk:"
+  echo "     Disk $disk_name:   Total: $disk_size | Used: $disk_used | Free: $disk_free | % Used: $disk_per | Mounted on: $disk_mnt"
+  echo "     Swap:   Total: $swap_total | Used: $swap_used | Free: $swap_free | % Used: $swap_per"
 
   
   
