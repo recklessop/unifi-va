@@ -17,20 +17,24 @@ do
   iptype=$(cat /etc/network/interfaces | grep -vi "lo" | grep -i "inet" | awk '{print $NF}')
   ipinfo=$(ifconfig $interface | awk '/inet addr/' | sed "s/^[ \t]*//")
   ipgw=$(ip route | grep -i "default" | awk '{ print $3 }')
+  # shows the webaddress by IPv4 to connect to to configure and manage the device
   manadd=$(/sbin/ifconfig $interface | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
+  # displays version of Unifi installed
   ver=$(cat /var/lib/unifi/db/version)
-  uptime=$(uptime)
+  # system uptime
+  uptime=$(uptime -p)
+  # shows date of system
   date=$(date)
   # swap componets
-  swap_total=`free -t -m | grep Swap | awk '{print $2" MB";}'`
-  swap_used=`free -t -m | grep Swap | awk '{print $3" MB";}'`
-  swap_free=`free -t -m | grep Swap | awk '{print $4" MB";}'`
-  swap_per=`free -m | awk '/Swap/ { printf("%3.1f%%", $3/$2*100) }'`
+  swap_total=$(free -t -m | grep Swap | awk '{print $2" MB";}')
+  swap_used=$(free -t -m | grep Swap | awk '{print $3" MB";}')
+  swap_free=$(free -t -m | grep Swap | awk '{print $4" MB";}')
+  swap_per=$(free -m | awk '/Swap/ { printf("%3.1f%%", $3/$2*100) }')
   # memory componets
-  mem_total=`free -t -m | grep Mem | awk '{print $2" MB";}'`
-  mem_used=`free -t -m | grep Mem | awk '{print $3" MB";}'`
-  mem_free=`free -t -m | grep Mem | awk '{print $4" MB";}'`
-  mem_per=`free -m | awk '/Mem/ { printf("%3.1f%%", $3/$2*100) }'`
+  mem_total=$(free -t -m | grep Mem | awk '{print $2" MB";}')		# Total system ram
+  mem_used=$(free -t -m | grep Mem | awk '{print $3" MB";}')		# used system ram
+  mem_free=$(free -t -m | grep Mem | awk '{print $4" MB";}')		# Free/Available memory
+  mem_per=$(free -m | awk '/Mem/ { printf("%3.1f%%", $3/$2*100) }')	# % of used memory
   # disk storage componets
   disk_name=$(df -h / | grep / | awk '{print $1;}')
   disk_size=$(df -h / | grep / | awk '{print $2;}')
