@@ -63,10 +63,10 @@ do
   echo "System Info:"
   echo "   Uptime: $uptime"
   echo "   Date:   $date"
-  echo "   Memory: Total: $mem_total | Used: $mem_used | Free: $mem_free | % Used: $mem_per"
+  echo "   Memory: Total: $mem_total | Used: $mem_used | Free: $mem_free | Percent Used: $mem_per"
   echo "   Disk:"
-  echo "     Disk:   Total: $disk_size | Used: $disk_used | Free: $disk_free | % Used: $disk_per | Mounted on: $disk_mnt | Name: $disk_name"
-  echo "     Swap:   Total: $swap_total | Used: $swap_used | Free: $swap_free | % Used: $swap_per"
+  echo "     Disk:   Total: $disk_size | Used: $disk_used | Free: $disk_free | Percent Used: $disk_per | Mounted on: $disk_mnt | Name: $disk_name"
+  echo "     Swap:   Total: $swap_total | Used: $swap_used | Free: $swap_free | Percent Used: $swap_per"
 
   
   
