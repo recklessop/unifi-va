@@ -50,9 +50,10 @@ do
   echo "   Unifi Controller Version: $ver"
   echo "System Info:"
   echo "   Uptime: $uptime"
-  echo "   Date: $date"
-  echo "   Swap: Total: $swap_total | Used: $swap_used | Free: $swap_free | % Used: $swap_per"
+  echo "   Date:   $date"
   echo "   Memory: Total: $swap_total | Used: $swap_used | Free: $swap_free | % Used: $swap_per"
+  echo "   Swap:   Total: $swap_total | Used: $swap_used | Free: $swap_free | % Used: $swap_per"
+
   
   
   echo "=================================================="
