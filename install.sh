@@ -7,7 +7,7 @@ echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb
 
 echo "unifi ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/apt/sources.list.d/mongodb-org-3.4.list
 
-cat >> /home/$me/override.conf <<EOF
+cat > /home/$me/override.conf <<EOF
 [Service]
 ExecStart=
 ExecStart=-/sbin/agetty --noissue --autologin $me \%I \$TERM
