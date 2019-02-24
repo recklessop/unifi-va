@@ -72,5 +72,10 @@ Catch {
     $_ | Write-Host
 }
 
+Start-VM -Name $vmname
+
+$VMInfo = Get-VM | Select-Object Name, @{N="IP Address";E={@($_.guest.IPAddress[0])}}
+
+$VMinfo.GetType()
 
 add-content $logfile ("Disconnecting vCenter session. Script Complete")
