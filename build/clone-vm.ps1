@@ -58,7 +58,7 @@ Catch {
 # Clonee Ubuntu 18.04 LTS template named 'ubuntu-18.04-lts'
 $myDatastore = Get-Datastore -Name "VNX5300-SAS"
 $myCluster = Get-Cluster -Name "New Cluster"
-$myTemplate = Get-Template -Name ubuntu-18.04-lts
+$myTemplate = Get-Template -Name "ubuntu1804lts"
 $mySpec = Get-OSCustomizationSpec -Name "unifi"
 $vmname = $Env:buildnumber
 Write-Host "clone name: $vmname"
