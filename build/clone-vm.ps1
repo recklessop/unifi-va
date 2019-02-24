@@ -74,6 +74,8 @@ Catch {
 
 Start-VM -VM $vmname -confirm:$false
 
+Start-Sleep -Seconds 120
+
 $VMInfo = Get-VM | Select-Object Name, @{N="IP Address";E={@($_.guest.IPAddress[0])}}
 
 $VMinfo.GetType()
