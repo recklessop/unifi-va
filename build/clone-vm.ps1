@@ -60,9 +60,9 @@ $myDatastore = Get-Datastore -Name "VNX5300-SAS"
 $myCluster = Get-Cluster -Name "New Cluster"
 $myTemplate = Get-Template -Name ubuntu-18.04-lts
 $mySpec = Get-OSCustomizationSpec -Name "unifi"
-$buildnumber = $Env:buildnumber
-Write-Host "DevOps Build number: $buildNumber"
-$vmname = "unifi-devops-build-$buildnumber" 
+$vmname = $Env:buildnumber
+Write-Host "clone name: $vmname"
+
 try{
     New-VM -Name $vmname -Template $myTemplate -OSCustomizationSpec $mySpec -Datastore $myDatastore -resourcepool $myCluster
 }
