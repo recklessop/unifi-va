@@ -5,12 +5,12 @@ dirpath=$(pwd)
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
 echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
 
-echo "unifi ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoer
+echo "unifi ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
 
 cat > /home/$me/override.conf <<EOF
 [Service]
 ExecStart=
-ExecStart=-/sbin/agetty --noissue --autologin $me \%I \$TERM
+ExecStart=-/sbin/agetty --noissue --autologin $me %I \$TERM
 Type=idle
 EOF
 sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
