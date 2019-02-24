@@ -42,9 +42,11 @@ Catch {
     $_ | Add-Content $logfile
 }
 
+
 #Connect to vCenter server
 try {
-    Connect-VIserver -Server 192.168.254.20 -User "administrator@vsphere.local" -Password "Nasadmin123#"
+    # connect to vi server using username and password from azure pipelines
+    Connect-VIserver -Server 192.168.254.20 -User $Env:viuser -Password $ENv:vipass
 }
 Catch {
     $_ | Add-Content $logfile
