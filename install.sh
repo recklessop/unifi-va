@@ -13,10 +13,10 @@ ExecStart=
 ExecStart=-/sbin/agetty --noissue --autologin $me \%I \$TERM
 Type=idle
 EOF
-
+sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
 sudo mv /home/$me/override.conf /etc/systemd/system/getty@tty1.service.d/
 sudo chown -R root:root /etc/systemd/system/getty@tty1.service.d
-
+sleep 10
 sudo apt update
 sudo apt upgrade -y
 sudo apt install python3-pip git -y
