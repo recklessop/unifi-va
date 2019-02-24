@@ -59,6 +59,7 @@ $myCluster = Get-Cluster -Name "New Cluster"
 $myTemplate = Get-Template -Name ubuntu-18.04-lts
 $mySpec = Get-OSCustomizationSpec -Name "unifi"
 $buildNumber = $Env:Build.BuildNumber
+Write-Host "DevOps Build number: $buildNumber"
 $vmname = "unifi-devops-build-$buildNumber" 
 try{
     New-VM -Name $vmname -Template $myTemplate -OSCustomizationSpec $mySpec-Datastore $myDatastore -resourcepool $myCluster
