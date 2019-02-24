@@ -72,7 +72,7 @@ Catch {
     $_ | Write-Host
 }
 
-Start-VM -Name $vmname
+Start-VM -VM $vmname -confirm:$false
 
 $VMInfo = Get-VM | Select-Object Name, @{N="IP Address";E={@($_.guest.IPAddress[0])}}
 
