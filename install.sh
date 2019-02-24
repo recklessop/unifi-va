@@ -36,5 +36,5 @@ rm unifi_sysvinit_all.deb || abort
 sudo service unifi start || abort
 
 cd /etc/profile.d/
-ln -s /home/$me/unifi-va/menu.sh
+sudo ln -s /home/$me/unifi-va/menu.sh
 cd ~
