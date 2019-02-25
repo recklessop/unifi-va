@@ -25,7 +25,12 @@ Set-PowerCLIConfiguration -invalidcertificateaction "ignore" -confirm:$false |ou
 Set-PowerCLIConfiguration -Scope Session -WebOperationTimeoutSeconds -1 -confirm:$false |out-null   
 $vmname = $Env:buildnumber
 
-Import-Module VMware.PowerCLI
+try {
+    Import-Module VMware.PowerCLI | Out-Null
+}
+Catch {
+    $_ | Out-Null
+}
 
 #Connect to vCenter server
 # connect to vi server using username and password from azure pipelines
