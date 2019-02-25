@@ -73,9 +73,16 @@ Catch {
 }
 
 Start-VM -VM $vmname -confirm:$false
+Start-Sleep -Seconds 60
 
-$VMInfo = Get-VM | Select-Object Name, @{N="IP Address";E={@($_.guest.IPAddress[0])}}
+$vm_ip = ""
+do {
+    Start-Sleep -Seconds 10
+    $VMInfo = Get-VM -Name $vmname | Select-Object Name, @{N="IP Address";E={@($_.guest.IPAddress[0])}}
+    $vm_ip = $VMInfo."IP Address"
+    Write-Output $ip
+} While(!$vm_ip)
 
-$VMinfo.GetType()
-
+Write-Output "The VM has an IP of $vm_ip"
+Write-Output "##vso[task.setvariable variable=vm_ip]$vm_ip"
 add-content $logfile ("Disconnecting vCenter session. Script Complete")
