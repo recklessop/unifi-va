@@ -77,7 +77,7 @@ Start-VM -VM $vmname -confirm:$false
 $ip = ""
 do {
     Start-Sleep -Seconds 10
-    $VMInfo = Get-VM | Select-Object Name, @{N="IP Address";E={@($_.guest.IPAddress[0])}}
+    $VMInfo = Get-VM -Name $vmname | Select-Object Name, @{N="IP Address";E={@($_.guest.IPAddress[0])}}
     $ip = $VMInfo."IP Address"
     Write-Output $ip
 } While( $ip -eq "")
