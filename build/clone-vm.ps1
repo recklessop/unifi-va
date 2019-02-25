@@ -75,14 +75,14 @@ Catch {
 Start-VM -VM $vmname -confirm:$false
 Start-Sleep -Seconds 60
 
-$ip = ""
+$vm_ip = ""
 do {
     Start-Sleep -Seconds 10
     $VMInfo = Get-VM -Name $vmname | Select-Object Name, @{N="IP Address";E={@($_.guest.IPAddress[0])}}
-    $ip = $VMInfo."IP Address"
+    $vm_ip = $VMInfo."IP Address"
     Write-Output $ip
-} While(!$ip)
+} While(!$vm_ip)
 
-Write-Output "The VM has an IP of $ip"
+Write-Output "The VM has an IP of $vm_ip"
 
 add-content $logfile ("Disconnecting vCenter session. Script Complete")
