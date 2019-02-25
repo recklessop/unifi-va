@@ -73,6 +73,7 @@ Catch {
 }
 
 Start-VM -VM $vmname -confirm:$false
+Start-Sleep -Seconds 60
 
 $ip = ""
 do {
@@ -80,7 +81,7 @@ do {
     $VMInfo = Get-VM -Name $vmname | Select-Object Name, @{N="IP Address";E={@($_.guest.IPAddress[0])}}
     $ip = $VMInfo."IP Address"
     Write-Output $ip
-} While( $ip -eq "")
+} While(!$ip)
 
 Write-Output "The VM has an IP of $ip"
 
