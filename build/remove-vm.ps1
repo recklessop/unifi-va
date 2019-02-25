@@ -40,8 +40,3 @@ $vmname = $Env:buildnumber
 Write-Host "clone name: $vmname"
 
 Remove-VM $vmname -DeletePermanently -confirm:$false
-
-do {
-    start-sleep -Seconds 5
-    $state = (Get-VM -Name $vmname).PowerState
-} while ($state -ne "PoweredOff")
