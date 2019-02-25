@@ -25,21 +25,7 @@ Set-PowerCLIConfiguration -invalidcertificateaction "ignore" -confirm:$false |ou
 Set-PowerCLIConfiguration -Scope Session -WebOperationTimeoutSeconds -1 -confirm:$false |out-null   
 $vmname = $Env:buildnumber
 
-if ( !(Get-Module -ListAvailable -Name VMware.PowerCLI -ErrorAction SilentlyContinue) ) {
-    write-host ("VMware PowerCLI PowerShell module not found. Please verify installation and retry.") -BackgroundColor Red
-    write-host "Terminating Script" -BackgroundColor Red
-    add-content $logfile ("VMware PowerCLI PowerShell module not found. Please verify installation and retry.")
-    add-content $logfile "Terminating Script" 
-    return
-}
-
-try {
-    Import-Module VMware.PowerCLI | Add-Content $logfile
-}
-Catch {
-    $_ | Add-Content $logfile
-}
-
+Import-Module VMware.PowerCLI | Add-Content $logfile
 
 #Connect to vCenter server
 # connect to vi server using username and password from azure pipelines
