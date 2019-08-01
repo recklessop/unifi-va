@@ -35,7 +35,7 @@ do
   echo "5.) Change unifi user password  6.) Exit"
   read choice
   case "$choice" in
-          1) # Update Unifi Scripts from Github
+          1) # Update Unifi Appliance
               clear
               echo "Updating Unifi from Ubuntu APT repo"
               (sudo apt update && sudo apt upgrade -y)
@@ -56,7 +56,8 @@ do
           3) # Update Unifi Scripts from Github
               clear
               echo "Updating Unifi from GitHub"
-              (cd /home/unifi/unifi-va/ && git reset --hard HEAD && git pull http://www.github.com/recklessop/unifi-va/)
+              (cd /home/unifi/unifi-va/ && git reset --hard HEAD && git pull http://www.github.com/recklessop/unifi-va/)`
+	      sudo /home/unifi/unifi-va/update-apt.sh
               ;;
           4) # enter bash shell prompt
               clear
