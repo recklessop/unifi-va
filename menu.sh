@@ -57,6 +57,7 @@ do
               clear
               echo "Updating Unifi from GitHub"
               (cd /home/unifi/unifi-va/ && git reset --hard HEAD && git pull http://www.github.com/recklessop/unifi-va/)`
+	      chmod 755 /home/unifi/unifi-va/update-apt.sh
 	      sudo /home/unifi/unifi-va/update-apt.sh
               ;;
           4) # enter bash shell prompt
