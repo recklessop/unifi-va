@@ -22,7 +22,7 @@ do
   clear
   echo "=================================================="
   echo "=      Recklessop's Unifi Virtual Appliance      ="
-  echo "=        Info and Config menu v1.1.0             ="
+  echo "=        Info and Config menu v1.2.0             ="
   echo "=================================================="
   echo "Current Network Config:"
   echo "   Interface Name: $interface"
@@ -32,7 +32,8 @@ do
   echo -e "Select an action from the menu below\n"
   echo "1.) Update Unifi Application    2.) Configure Network Settings"
   echo "3.) Update Unifi-va Scripts     4.) Bash Shell"
-  echo "5.) Change unifi user password  6.) Exit"
+  echo "5.) Change unifi user password  6.) Update system UUIDs"
+  echo "7.) Exit"
   read choice
   case "$choice" in
           1) # Update Unifi Appliance
@@ -69,7 +70,18 @@ do
 	      echo "Enter a new password for user unifi:"
               /usr/bin/passwd
               ;;
-          6) # exit the menu script
+          6) # update system UUIDs
+              uuid=$(uuidgen)
+              reporter=$(uuidgen)
+              echo "Setting system uuid to $uuid"
+              sudo sed -i ':a;N;$!ba;s/uuid=[A-Fa-f0-9-]*/uuid='"$uuid"'/2' /var/lib/unifi/system.properties
+              echo "Setting system reporter-id to $reporter"
+              sudo sed -i ':a;N;$!ba;s/uuid=[A-Fa-f0-9-]*/uuid='"$reporter"'/1' /var/lib/unifi/system.properties
+              echo "Restarting Unifi service"
+              sudo /etc/init.d/unifi restart
+              ;;
+
+          7) # exit the menu script
               exit
               ;;
           *) echo "invalid option try again";;
